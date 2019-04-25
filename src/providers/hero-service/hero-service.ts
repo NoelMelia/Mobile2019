@@ -3,19 +3,14 @@ import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import { Md5 } from "ts-md5/dist/md5";
 
-/*
-  Generated class for the HeroService provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class HeroService {
   data: any;
   constructor(public http: Http) {
-    console.log("Hello HeroService");
+    
   }
-
+//Calling the api and getting the deatils for the homepage page 
   load() {
     return new Promise(resolve => {
       let md5 = new Md5();
@@ -37,11 +32,12 @@ export class HeroService {
         });
     });
   }
-
+  //Calling the api and getting the deatils for the decription page 
   getDescription(id: number) {
     return new Promise(resolve => {
       let md5 = new Md5();
-
+      //I found getting all this details very hard to get working.Between the timestamp getting the current date and hash
+      //It was all a bit over my head but i got it working in the end
       var timestamp = Number(new Date());
       var hash = Md5.hashStr(
         timestamp +

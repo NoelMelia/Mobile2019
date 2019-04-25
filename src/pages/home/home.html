@@ -1,29 +1,27 @@
 <ion-header>
-    <ion-navbar color="dark">
-      <ion-title>
-        Member Area
-      </ion-title>
-      
-    </ion-navbar>
-  </ion-header>
-  <ion-content class="home">
-      
-      
-    <ion-list>
-      
-       <ion-item class="hero" (click)="getDescription(hero.id)" *ngFor="let hero of heroes">
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Marvel Characters</ion-title>
+  </ion-navbar>
+</ion-header>    
+<ion-content class="home">  
+  <ion-list>  
+      <ion-item class="hero" (click)="getDescription(hero.id)" *ngFor="let hero of heroes">
         <ion-avatar item-left >
           <img src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}">
         </ion-avatar>
-        <h2>{{hero.name}}</h2>
-      </ion-item> 
-    </ion-list>
-    <ion-infinite-scroll threshold="100px">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading more data...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-      
-  </ion-content>
+      <h2>{{hero.name}}</h2>
+    </ion-item> 
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+    
+</ion-content>
   

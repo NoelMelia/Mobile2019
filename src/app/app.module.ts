@@ -10,27 +10,29 @@ import { LoginPage } from '../pages/login/login';
 import { HeroService } from '../providers/hero-service/hero-service';
 import { AuthService } from './../providers/auth-service/auth-service';
 import { HttpModule } from '@angular/http';
-import { DescriptionPage } from '../pages/description/description';
+import { RegisterPage } from '../pages/register/register';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    DescriptionPage,
     LoginPage,
+    RegisterPage
 
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-
+    RegisterPage,
     LoginPage,
 
   ],

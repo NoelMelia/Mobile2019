@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Loading, LoadingController, AlertController } from 'ionic-angular';
 import {AuthService} from '../../providers/auth-service/auth-service';
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -16,7 +11,11 @@ import {AuthService} from '../../providers/auth-service/auth-service';
 export class LoginPage {
   loading: Loading;
   registerCredentials = { email: '', password: '' };
-  constructor(public navCtrl: NavController, private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,
+     private nav: NavController,
+      private auth: AuthService,
+       private alertCtrl: AlertController,
+        private loadingCtrl: LoadingController) {
   }
   public createAccount() {
     this.nav.push('RegisterPage');
@@ -26,15 +25,17 @@ export class LoginPage {
   }
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(LoginPage, {
+    this.navCtrl.push(HomePage, {
       item: item
     });
   }
   public login() {
-    this.showLoading()
+    this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
+      this.navCtrl.push(HomePage);
+      
       if (allowed) {        
-        this.nav.setRoot('HomePage');
+        
       } else {
         this.showError("Access Denied");
       }
@@ -62,4 +63,5 @@ export class LoginPage {
     });
     
   }
+ 
 }

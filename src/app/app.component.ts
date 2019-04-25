@@ -22,6 +22,7 @@ export class MyApp {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
+    //Used for the Menu Icon on top left of home,login and register
     this.pages = [
       { title: 'Login', component: LoginPage },
       { title: 'Register', component: RegisterPage },

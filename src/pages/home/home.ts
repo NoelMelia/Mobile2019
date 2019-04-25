@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HeroService } from '../../providers/hero-service/hero-service';
+import { NavController, NavParams } from 'ionic-angular';
  
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  username = '';
-  email = '';
+  // username = '';
+  // password = '';
   public obj: any;
   public heroes: any;
-  constructor( private navCtrl: NavController, 
-    private auth: AuthService,
+  constructor(public navCtrl: NavController, public navParams: NavParams,   
+     
     public heroService: HeroService) {
-    // let info = this.auth.getUserInfo();
-    // this.username = info['username'];
-    // this.email = info['email'];
     this.getAllHeroes();
   }
+  //Getting the Hero or Character info from the Marvel api. It was difficult to get it working as it has a public and private key
+  //Nad also a hashkey and timestamp
   getAllHeroes() {
     this.heroService.load()
       .then(data => {
@@ -27,12 +27,16 @@ export class HomePage {
         this.heroes = this.obj.data.results;
       });
   }
-
+  
+  //Creating the charcter id and going to the description page with info
   getDescription(id:number){
     console.log(id);
     this.navCtrl.push("DescriptionPage", {
       id: id
     })
   }
+  
+  
+  
   }
 
