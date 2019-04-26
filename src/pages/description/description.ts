@@ -30,8 +30,8 @@ export class DescriptionPage {
       this.hero.thumb = this.obj.data.results[0].thumbnail.path +"."+ this.obj.data.results[0].thumbnail.extension;
       this.hero.description =  this.obj.data.results[0].description;
       //Printed out to the console for testing. Left it in
-      this.storage.set('hero',this.hero);
-      console.log(this.hero);
+      this.storage.set('hero',this.hero.name);//Storing the name of the character
+      console.log(this.hero.name);
 
     });
   }
