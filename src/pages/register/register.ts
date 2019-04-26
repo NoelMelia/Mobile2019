@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController,AlertController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
@@ -21,7 +21,10 @@ export class RegisterPage {
   registerCredentials = { username: '', password: '' };
   savename :string;
     savepass :string;
-  constructor(public storage:Storage,private nav: NavController, public navCtrl: NavController,private auth: AuthService, private alertCtrl: AlertController) {
+  constructor(public storage:Storage, 
+    public navCtrl: NavController,
+    private auth: AuthService, 
+    private alertCtrl: AlertController) {
   }
   //Creating the new details and checking that they are valid
   public register() {
