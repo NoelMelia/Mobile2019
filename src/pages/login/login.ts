@@ -10,7 +10,7 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = { email: '', password: '' };
+  registerCredentials = { username: '', password: '' };
   constructor(public navCtrl: NavController,
      private nav: NavController,
       private auth: AuthService,
@@ -29,11 +29,12 @@ export class LoginPage {
       item: item
     });
   }
+  //Once the user has entered there details to login in
   public login() {
     this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-      this.navCtrl.push(HomePage);
       
+      this.navCtrl.push(HomePage);
       if (allowed) {        
         
       } else {
@@ -44,7 +45,7 @@ export class LoginPage {
         this.showError(error);
       });
   }
- 
+ //Only a message to say loading
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',
@@ -52,7 +53,7 @@ export class LoginPage {
     });
     this.loading.present();
   }
- 
+ //Error Message and error handling
   showError(text) {
     this.loading.dismiss();
  

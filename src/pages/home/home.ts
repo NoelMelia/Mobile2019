@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AuthService } from '../../providers/auth-service/auth-service';
 import { HeroService } from '../../providers/hero-service/hero-service';
 import { NavController, NavParams } from 'ionic-angular';
  
@@ -17,9 +16,10 @@ export class HomePage {
      
     public heroService: HeroService) {
     this.getAllHeroes();
+
   }
   //Getting the Hero or Character info from the Marvel api. It was difficult to get it working as it has a public and private key
-  //Nad also a hashkey and timestamp
+  //Had also a hashkey and timestamp
   getAllHeroes() {
     this.heroService.load()
       .then(data => {
@@ -34,6 +34,7 @@ export class HomePage {
     this.navCtrl.push("DescriptionPage", {
       id: id
     })
+    
   }
   
   

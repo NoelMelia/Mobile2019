@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the RegisterPage page.
@@ -17,9 +18,10 @@ import { HomePage } from '../home/home';
 })
 export class RegisterPage {
   createSuccess = false;
-  registerCredentials = { email: '', password: '' };
- 
-  constructor(private nav: NavController, public navCtrl: NavController,private auth: AuthService, private alertCtrl: AlertController) {
+  registerCredentials = { username: '', password: '' };
+  savename :string;
+    savepass :string;
+  constructor(public storage:Storage,private nav: NavController, public navCtrl: NavController,private auth: AuthService, private alertCtrl: AlertController) {
   }
   //Creating the new details and checking that they are valid
   public register() {
@@ -27,7 +29,11 @@ export class RegisterPage {
       if (success) {
         this.createSuccess = true;
         this.showPopup("Success", "Account created.");
-       
+        
+        //Storing the name in Storage
+        this.storage.set('registerCredentials',this.registerCredentials);
+        console.log(this.registerCredentials.username,this.registerCredentials.password);
+        
       } else {
         this.showPopup("Error", "Problem creating account.");
       }

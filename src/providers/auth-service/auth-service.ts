@@ -21,6 +21,7 @@ export class User {
 export class AuthService {
   constructor(public storage:Storage){}
   currentUser: User;
+  
  //Getting the login details and confirming that they are correct
   public login(credentials) {
     if (credentials.username === null || credentials.password === null) {
